@@ -52,8 +52,7 @@ node {
         }
     }
 }  
-     }
-}
+   
 	     
 	      stage('Dev Deployment') {
  
@@ -84,4 +83,5 @@ node {
     }
 }  
      }
+}	
 }
