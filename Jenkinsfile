@@ -26,7 +26,7 @@ node {
         checkout scm
     }
    
-     stage('Dev Deployment') {
+     stage('Actual Dev Deployment') {
  
        if (env.BRANCH_NAME == "dev")  {
 
@@ -56,7 +56,7 @@ node {
 }  
    
 	     
-	      stage('Dev Deployment') {
+	      stage('Personal Dev Deployment') {
  
        if (env.BRANCH_NAME == "master")  {
 
