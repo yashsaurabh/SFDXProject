@@ -86,11 +86,7 @@ node {
         }
     }
 }  
-     }
-}	
-}
-
- stage('Production Dev Deployment') {
+		      stage('Production Prod Dev Deployment') {
  
        if (env.BRANCH_NAME == "prod")  {
 
@@ -115,8 +111,13 @@ node {
             printf rmsg
             println('Hello from a Job DSL script!')
             println(rmsg)
+     }
+}
+ 	
+}
+
         }
     }
 }  
  }
-}
+
