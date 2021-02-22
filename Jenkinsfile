@@ -11,7 +11,8 @@ node {
     def SFDC_HOST = env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
-     def CONNECTED_APP_CONSUMER_KEY1=env.CONNECTED_APP1
+	def CONNECTED_APP_CONSUMER_KEY1=env.CONNECTED_APP1
+
     println 'KEY IS' 
     println JWT_KEY_CRED_ID
     println HUB_ORG
@@ -25,14 +26,14 @@ node {
         checkout scm
     }
    
-     stage('Dev Deployment') {
+     stage('Actual Dev Deployment') {
  
        if (env.BRANCH_NAME == "dev")  {
 
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Deploye Code') {
             if (isUnix()) {
-                rc = sh returnStatus: true, script: "${toolbelt} force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
+                rc = sh returnStatus: true, script: "${toolbelt} force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY1} --username ${HUB_ORG1} --jwtkeyfile ${jwt_key_file} --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
             }else{
                  rc = bat returnStatus: true, script: "\"${toolbelt}\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY1} --username ${HUB_ORG1} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
             }
@@ -55,7 +56,7 @@ node {
 }  
    
 	     
-	      stage('Dev Deployment') {
+	      stage('Personal Dev Deployment') {
  
        if (env.BRANCH_NAME == "master")  {
 
